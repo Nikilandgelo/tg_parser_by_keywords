@@ -1,0 +1,4 @@
+.venv
+.env
+searching_for_messages.session*
+__pycache__
