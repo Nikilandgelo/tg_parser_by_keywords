@@ -1,0 +1,8 @@
+telethon
+aiogram
+python-dotenv
+colorama
+termcolor
+isort
+black
+flake8
