@@ -1,6 +1,6 @@
 import logging
 from asyncio import run, sleep
-from os import getenv, environ
+from os import getenv
 
 from aiogram import Bot
 from colorama import just_fix_windows_console
