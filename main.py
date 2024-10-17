@@ -44,7 +44,7 @@ async def main():
         except ValueError as e:
             logging.error(
                 colored(
-                    f"Error fetching messages from {channels}:\n{e}", "red"
+                    f"Error fetching messages from {url_channels}:\n{e}", "red"
                 )
             )
 
@@ -52,7 +52,7 @@ async def main():
 if __name__ == "__main__":
     logging.basicConfig(
         level=logging.INFO,
-        format="{asctime} - {levelname}:{message}\n",
+        format="{asctime} - {levelname}: {message}\n",
         style="{",
     )
     just_fix_windows_console()
