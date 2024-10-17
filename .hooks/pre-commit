@@ -1,0 +1,16 @@
+#!/bin/sh
+echo "Running isort..."
+isort .
+if [ $? -ne 0 ]; then
+    echo "isort failed, please fix the import order."
+    exit 1
+fi
+
+echo "Running black..."
+black .
+if [ $? -ne 0 ]; then
+    echo "black failed, please fix the code formatting."
+    exit 1
+fi
+
+exit 0
