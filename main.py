@@ -1,6 +1,6 @@
 import logging
 from asyncio import run, sleep
-from os import getenv
+from os import getenv, environ
 
 from aiogram import Bot
 from colorama import just_fix_windows_console
@@ -11,19 +11,19 @@ from termcolor import colored
 
 from find_messages import proceed_new_messages
 
-api_id: str | None = getenv("API_ID")
-api_hash: str | None = getenv("API_HASH")
-url_channels: list[str] = [
-    channel.strip() for channel in getenv("CHANNELS_LINKS").split(",")
-]
-keywords: list[str] = [
-    keyword.strip() for keyword in getenv("KEYWORDS").split(",")
-]
-bot_token: str | None = getenv("BOT_TOKEN")
-target_user_id: str | None = getenv("YOUR_TELEGRAM_ID")
-
 
 async def main():
+    api_id: str | None = getenv("API_ID")
+    api_hash: str | None = getenv("API_HASH")
+    url_channels: list[str] = [
+        channel.strip() for channel in getenv("CHANNELS_LINKS").split(",")
+    ]
+    keywords: list[str] = [
+        keyword.strip() for keyword in getenv("KEYWORDS").split(",")
+    ]
+    bot_token: str | None = getenv("BOT_TOKEN")
+    target_user_id: str | None = getenv("YOUR_TELEGRAM_ID")
+
     client = TelegramClient("searching_for_messages", api_id, api_hash)
     bot = Bot(token=bot_token)
     async with client:
