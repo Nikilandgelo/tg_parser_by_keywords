@@ -20,7 +20,9 @@ async def proceed_new_messages(
     for index, channel in enumerate(channels):
         if result.dialogs[index].unread_count == 0:
             continue
-        logging.info(colored(f"Found new messages in {channel.title}.", "green"))
+        logging.info(
+            colored(f"Found new messages in {channel.title}.", "green")
+        )
         kwargs: dict[str] = locals()
         kwargs["channel"] = channel
         kwargs["last_readed_id"] = result.dialogs[index].read_inbox_max_id
@@ -42,11 +44,18 @@ async def find_messages(
         if last_readed_id >= message.id:
             break
         try:
-            if any(keyword.lower() in message.message.lower() for keyword in keywords):
+            if any(
+                keyword.lower() in message.message.lower()
+                for keyword in keywords
+            ):
                 logging.info(
-                    colored(f"New matching message in {channel.title}!", "green")
+                    colored(
+                        f"New matching message in {channel.title}!", "green"
+                    )
                 )
-                message_link: str = f"https://t.me/{channel.username}" f"/{message.id}"
+                message_link: str = (
+                    f"https://t.me/{channel.username}" f"/{message.id}"
+                )
                 text: str = (
                     f"New matching message in {channel.title}, relative to"
                     f" your keywords - {','.join(keywords)}:\n\n"
@@ -56,12 +65,17 @@ async def find_messages(
         except AttributeError:
             logging.warning(
                 colored(
-                    (f"Skipping the message in {channel.title}" f" it has no text."),
+                    (
+                        f"Skipping the message in {channel.title}"
+                        f" it has no text."
+                    ),
                     "yellow",
                 )
             )
         finally:
             await client.send_read_acknowledge(channel, message)
             logging.info(
-                colored(f"Marked message as read in {channel.title}.", "magenta")
+                colored(
+                    f"Marked message as read in {channel.title}.", "magenta"
+                )
             )
