@@ -18,6 +18,7 @@ jobs:
             - name: Install dependencies
               run: |
                   pip install pip-tools
+                  pip-compile
                   pip-sync
             - name: Lint
               run: flake8 .
