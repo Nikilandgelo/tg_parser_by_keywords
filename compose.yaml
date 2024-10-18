@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    container_name: tg_parser_by_keywords
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+  
