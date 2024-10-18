@@ -38,7 +38,7 @@ def check_env() -> dict | None:
             "bot_token": bot_token,
             "target_user_id": target_user_id,
         }
-    except AttributeError as e:
+    except AttributeError:
         logging.error(
             colored(
                 (
@@ -48,7 +48,7 @@ def check_env() -> dict | None:
                 "red",
             )
         )
-    except ValueError as e:
+    except ValueError:
         logging.error(
             colored(
                 ("Please, pass all telegram credentials in .env file."), "red"

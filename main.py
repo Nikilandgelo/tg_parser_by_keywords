@@ -35,7 +35,7 @@ async def main(env_variables: dict):
         TelegramUnauthorizedError,
         TelegramBadRequest,
         TelegramForbiddenError,
-    ) as e:
+    ):
         logging.error(
             colored(
                 (

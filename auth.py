@@ -32,11 +32,11 @@ class Client:
             )
         except RuntimeError as error:
             logging.error(colored(error, "red"))
-        except TypeError as e:
+        except TypeError:
             logging.error(
                 colored("Your phone number must contain only numbers.", "red")
             )
-        except (PasswordHashInvalidError, PhoneNumberInvalidError) as e:
+        except (PasswordHashInvalidError, PhoneNumberInvalidError):
             logging.error(
                 colored(
                     (
