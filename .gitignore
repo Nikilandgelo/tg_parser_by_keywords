@@ -1,4 +1,4 @@
 .venv
 .env
-searching_for_messages.session*
+*.session*
 __pycache__
