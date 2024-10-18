@@ -1,31 +1,34 @@
 # 🌐 Project Overview
 
-This project is the **Telegram keyword parser bot** that monitors specified Telegram channels for messages containing user-defined keywords.
-It uses `Telethon` and `Aiogram` for interacting with the [Telegram API](https://core.telegram.org/) and sending notifications to a specified user.
+This project is the **Telegram keyword parser bot** that scans specified channels for messages containing user-defined keywords and sends notifications via a bot.
+It is built using `Telethon` for interacting with Telegram channels and `Aiogram` for bot interactions. The project leverages `Docker` for containerization, ensuring easy setup and deployment.
 
 ## 🚀 Key Features
-- 🔍 Keyword Monitoring: Tracks new messages across multiple channels and checks for matching keywords.
-- 💬 Notification Bot: Sends a Telegram notification to a specified user when a keyword match is found.
-- 📦 Channel Management: Automatically marks messages as read once they are processed.
-- 🐍 Asynchronous Processing: Utilizes Python's asyncio for efficient, non-blocking message retrieval.
+- 🛠 Asynchronous message handling using `aiogram` and `Telethon`.
+- 🔍 Keyword-based message filtering from multiple channels.
+- 💬 Automatic notifications via Telegram bot for matched messages.
+- 🐍 `Python 3.13` and `pip-tools` for managing dependencies.
+- 🐋 Dockerized environment: easily set up and run the application in a containerized environment using `Docker` and `Docker Compose`.
 
 ## 💻 Technologies Used
-- [**Python 3.12**](https://www.python.org/): The main language used for building the project.
-- [**Telethon: Library**](https://docs.telethon.dev/en/stable/index.html): for working with the Telegram API.
-- [**Aiogram**](https://docs.aiogram.dev/en/stable/index.html): Telegram bot framework to handle user notifications.
-- [**pip-tools**](https://github.com/jazzband/pip-tools): For managing Python dependencies.
-- [**Colorama & Termcolor**](https://github.com/tartley/colorama): For terminal coloring and enhanced logging.
+| [**Python 3.13**](https://www.python.org/)      | [**Telethon: Library**](https://docs.telethon.dev/en/stable/index.html) | [**Aiogram**](https://docs.aiogram.dev/en/stable/index.html) | [**pip-tools**](https://github.com/jazzband/pip-tools) | [**Colorama & Termcolor**](https://github.com/tartley/colorama) |  [**Docker**](https://docs.docker.com/)      | 
+| ----------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ | --------------------------------------------------------------- | -------------------------------------------- |
+| The main language used for building the project | For working with the Telegram API                                       | Telegram bot framework to handle user notifications          | For managing Python dependencies                       | For terminal coloring and enhanced logging                      | For seamless containerization and deployment |
 
 ## 🛠️ Setup Instructions
 
 ### 📋 Prerequisites
+- `Docker` and `Docker Compose` installed on your machine.
 - A `.env` file in the root directory containing the following environment variables:
   
     ```env
-    API_ID=<your_telegram_api_id>
-    API_HASH=<your_telegram_api_hash>
     CHANNELS_LINKS=<comma_separated_channel_links>
     KEYWORDS=<comma_separated_keywords>
+
+    API_ID=<your_telegram_api_id>
+    API_HASH=<your_telegram_api_hash>
+    TELEGRAM_PHONE_NUMBER=<your_telegram_phone_number>
+    TELEGRAM_PASSWORD=<your_telegram_password>
 
     BOT_TOKEN=<your_bot_token>
     YOUR_TELEGRAM_ID=<your_user_id>
@@ -38,23 +41,18 @@ It uses `Telethon` and `Aiogram` for interacting with the [Telegram API](https:/
     git clone https://github.com/Nikilandgelo/tg_parser_by_keywords.git
     cd tg_parser_by_keywords
     ```
-2. Set up a virtual environment:
+2. Build and start the Docker container:
 
    ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
+   docker-compose up -d --build
     ```
-3. Install dependencies: Ensure that `pip-tools` is installed first to manage the dependencies:
+3. Authenticate your Telegram account:
 
    ```bash
-   pip install pip-tools
-   pip-compile -U
-   pip-sync
+   docker compose exec app python3 main.py --auth
     ```
-4. Run the bot:
+4. Start the bot in detached mode:
 
    ```bash
-    
-   python3 main.py
-    
+   docker compose exec -d app python3 main.py
     ```
