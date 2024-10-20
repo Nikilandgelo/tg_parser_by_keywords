@@ -1,3 +1,5 @@
+name: tg_parser_by_keywords_compose
+
 services:
   app:
     build: .
@@ -6,4 +8,5 @@ services:
       - .env
     stdin_open: true
     tty: true
-  
+    volumes:
+      - .:/app
