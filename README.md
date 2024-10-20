@@ -32,6 +32,8 @@ It is built using `Telethon` for interacting with Telegram channels and `Aiogram
 
     BOT_TOKEN=<your_bot_token>
     YOUR_TELEGRAM_ID=<your_user_id>
+    
+    SESSION_NAME=<your_session_name>
     ```
 
 ### 🚀 Running the Application
@@ -41,18 +43,13 @@ It is built using `Telethon` for interacting with Telegram channels and `Aiogram
     git clone https://github.com/Nikilandgelo/tg_parser_by_keywords.git
     cd tg_parser_by_keywords
     ```
-2. Build and start the Docker container:
+2. Authenticate your Telegram account:
 
    ```bash
-   docker-compose up -d --build
+   docker compose run app --auth
     ```
-3. Authenticate your Telegram account:
+3. Start the bot in detached mode:
 
    ```bash
-   docker compose exec app python3 main.py --auth
-    ```
-4. Start the bot in detached mode:
-
-   ```bash
-   docker compose exec -d app python3 main.py
+   docker compose up -d
     ```
