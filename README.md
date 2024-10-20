@@ -1,3 +1,11 @@
+> [!CAUTION]
+> Please be aware that using this bot to scrape messages or automate actions on Telegram may violate Telegram's policies, even if you are not engaging in spam, illegal activities, or violating their Terms of Service (ToS). Telegram has been actively restricting accounts that exhibit bot-like behavior as part of their fight against abuse and spam. This could lead to:
+> - **Temporary or permanent account bans**
+> - **Loss of access to your account, without guaranteed support from Telegram**
+> - **Potential risks to account safety and privacy**
+>
+> Use this bot at your own risk, and be cautious of the potential consequences of automated interactions on Telegram. It is advisable to follow all of Telegram's guidelines and avoid any activity that could be perceived as spammy or suspicious.
+
 # 🌐 Project Overview
 
 This project is the **Telegram keyword parser bot** that scans specified channels for messages containing user-defined keywords and sends notifications via a bot.
