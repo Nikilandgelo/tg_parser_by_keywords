@@ -1,6 +1,5 @@
 import argparse
 import logging
-import sys
 from asyncio import gather, run, sleep
 
 from aiogram import Bot
