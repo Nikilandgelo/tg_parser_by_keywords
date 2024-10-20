@@ -19,6 +19,7 @@ def check_env() -> dict | None:
 
         bot_token: str | None = getenv("BOT_TOKEN")
         target_user_id: str | None = getenv("YOUR_TELEGRAM_ID")
+        session_name: str | None = getenv("SESSION_NAME")
         if None in (
             api_id,
             api_hash,
@@ -26,6 +27,7 @@ def check_env() -> dict | None:
             tg_password,
             bot_token,
             target_user_id,
+            session_name,
         ):
             raise ValueError
         return {
@@ -37,6 +39,7 @@ def check_env() -> dict | None:
             "tg_password": tg_password,
             "bot_token": bot_token,
             "target_user_id": target_user_id,
+            "session_name": session_name,
         }
     except AttributeError:
         logging.error(

@@ -21,7 +21,9 @@ from find_messages import proceed_new_messages
 
 async def main(env_variables: dict):
     tg_client = Client(
-        env_variables.get("api_id"), env_variables.get("api_hash")
+        env_variables.get("session_name"),
+        env_variables.get("api_id"),
+        env_variables.get("api_hash"),
     )
     bot = Bot(token=env_variables.get("bot_token"))
     target_user_id = env_variables.get("target_user_id")
@@ -81,7 +83,6 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="{asctime} - {levelname}: {message}\n",
         style="{",
-        handlers=[logging.StreamHandler(sys.stdout)],
     )
     just_fix_windows_console()
 
@@ -91,7 +92,6 @@ if __name__ == "__main__":
             description="Telegram Keyword Parser Bot"
         )
         parser.add_argument(
-            "-a",
             "--auth",
             action="store_true",
             help="Run authentication for Telegram",
@@ -102,7 +102,9 @@ if __name__ == "__main__":
                 colored("Running first-time authentication...", "cyan")
             )
             Client(
-                env_variables.get("api_id"), env_variables.get("api_hash")
+                env_variables.get("session_name"),
+                env_variables.get("api_id"),
+                env_variables.get("api_hash"),
             ).create_user_session(
                 env_variables.get("tg_phone_number"),
                 env_variables.get("tg_password"),

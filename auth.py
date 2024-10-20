@@ -11,8 +11,8 @@ from termcolor import colored
 
 class Client:
 
-    def __init__(self, api_id, api_hash):
-        self.session_name = "searching_for_messages"
+    def __init__(self, session_name, api_id, api_hash):
+        self.session_name = session_name
         self.api_id = api_id
         self.api_hash = api_hash
 
@@ -24,8 +24,8 @@ class Client:
                 colored(
                     (
                         "Successfully logged in! Now you can just run the"
-                        " command 'docker compose exec -d app python main.py'"
-                        " and all will be working by its own."
+                        " command 'docker compose up -d' and all will"
+                        " be working by its own."
                     ),
                     "green",
                 )
